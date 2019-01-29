@@ -18,8 +18,8 @@ We have **durable exchange** `errors` from where each individual queues gets mes
 - Enable management plugin (`rabbitmq-plugins enable rabbitmq_management`)
 - Edit your configuration file (default in Linux `/etc/rabbitmq/rabbitmq.conf`)
 
-  ```bash
-  rabbitmq-plugins enable rabbitmq_management
+  ```
+  management.load_definitions = /path/to/definitions/rabbit.definitions.json
   ```
 
   OR
