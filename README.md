@@ -6,6 +6,8 @@ Registry is based on RabbitMQ for messaging protocol
 
 We have **durable exchange** `errors` from where each individual queues gets messages. e.g. nodejs errors goes to `errors/nodejs` queue via the same-named routing key
 
+For handling invalid messages we have dead-letter exchange `stash`
+
 ## Getting started
 
 ## Docker way
