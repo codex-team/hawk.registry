@@ -15,6 +15,17 @@ For handling invalid messages we have dead-letter exchange `stash`. `stash` poli
 > Routing key: `errors/<language_name>`
 > ```
 
+| Queue                   | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| `errors/<languae_name>` | Queues for errors                                  |
+| `stash/<language_name>` | Queues for invalid errors                          |
+| `log`                   | Queue for logging worker (notify to telegram, etc) |
+
+| Exchange | Description                                                                             |
+| -------- | --------------------------------------------------------------------------------------- |
+| `errors` | Main exchange for errors, routes to `errors/<language_name>` via same-named routing key |
+| `stash`  | Dead-letter exchange for invalid errors of `errors/*` queues                            |
+
 ## Getting started
 
 ## Docker way
