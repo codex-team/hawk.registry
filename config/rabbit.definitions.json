@@ -1,5 +1,7 @@
 {
-  "//": { "rabbit_version": "3.7.8" },
+  "//": {
+    "rabbit_version": "3.7.8"
+  },
   "users": [
     {
       "name": "guest",
@@ -8,7 +10,11 @@
       "tags": "administrator"
     }
   ],
-  "vhosts": [{ "name": "/" }],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
   "permissions": [
     {
       "user": "guest",
@@ -22,16 +28,31 @@
   "parameters": [],
   "//": {
     "global_parameters": [
-      { "name": "cluster_name", "value": "rabbit@6542d9b6d360" }
+      {
+        "name": "cluster_name",
+        "value": "rabbit@6542d9b6d360"
+      }
     ]
   },
   "policies": [
     {
       "vhost": "/",
       "name": "stash",
-      "pattern": "errors/*",
+      "pattern": "^errors/",
       "apply-to": "queues",
-      "definition": { "dead-letter-exchange": "stash" },
+      "definition": {
+        "dead-letter-exchange": "stash"
+      },
+      "priority": 0
+    },
+    {
+      "vhost": "/",
+      "name": "stash-notify",
+      "pattern": "^notify/",
+      "apply-to": "queues",
+      "definition": {
+        "dead-letter-exchange": "stash"
+      },
       "priority": 0
     }
   ],
@@ -135,6 +156,13 @@
       "arguments": {}
     },
     {
+      "name": "stash/notify",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
       "name": "grouper",
       "vhost": "/",
       "durable": true,
@@ -143,6 +171,62 @@
     },
     {
       "name": "log",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "notify/check",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "notify/email",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "notify/telegram",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "notify/slack",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "stash/notify/check",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "stash/notify/email",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "stash/notify/telegram",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "stash/notify/slack",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
@@ -161,6 +245,15 @@
     },
     {
       "name": "stash",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "notify",
       "vhost": "/",
       "type": "direct",
       "durable": true,
@@ -272,6 +365,70 @@
       "destination": "stash/test",
       "destination_type": "queue",
       "routing_key": "errors/test",
+      "arguments": {}
+    },
+    {
+      "source": "notify",
+      "vhost": "/",
+      "destination": "notify/check",
+      "destination_type": "queue",
+      "routing_key": "notify/check",
+      "arguments": {}
+    },
+    {
+      "source": "notify",
+      "vhost": "/",
+      "destination": "notify/email",
+      "destination_type": "queue",
+      "routing_key": "notify/email",
+      "arguments": {}
+    },
+    {
+      "source": "notify",
+      "vhost": "/",
+      "destination": "notify/slack",
+      "destination_type": "queue",
+      "routing_key": "notify/slack",
+      "arguments": {}
+    },
+    {
+      "source": "notify",
+      "vhost": "/",
+      "destination": "notify/telegram",
+      "destination_type": "queue",
+      "routing_key": "notify/telegram",
+      "arguments": {}
+    },
+    {
+      "source": "stash",
+      "vhost": "/",
+      "destination": "stash/notify/check",
+      "destination_type": "queue",
+      "routing_key": "notify/check",
+      "arguments": {}
+    },
+    {
+      "source": "stash",
+      "vhost": "/",
+      "destination": "stash/notify/email",
+      "destination_type": "queue",
+      "routing_key": "notify/email",
+      "arguments": {}
+    },
+    {
+      "source": "stash",
+      "vhost": "/",
+      "destination": "stash/notify/slack",
+      "destination_type": "queue",
+      "routing_key": "notify/slack",
+      "arguments": {}
+    },
+    {
+      "source": "stash",
+      "vhost": "/",
+      "destination": "stash/notify/telegram",
+      "destination_type": "queue",
+      "routing_key": "notify/telegram",
       "arguments": {}
     }
   ]
