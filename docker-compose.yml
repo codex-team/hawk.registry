@@ -2,11 +2,39 @@ version: "3"
 
 services:
   rabbitmq:
-    image: "rabbitmq:3-management"
+    build: .
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "15672:15672" # Management
+      - "5672:5672" # AMQP
     volumes:
-      - $PWD/config/rabbit.definitions.json:/tmp/rabbit.definitions.json:ro
+      - ./config/rabbit.definitions.json:/tmp/rabbit.definitions.json:ro
+      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config
+      - rabbit_data:/var/lib/rabbitmq
     environment:
       - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_management load_definitions "/tmp/rabbit.definitions.json"
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3040:3000
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - grafana_data:/var/lib/grafana
+    env_file:
+      - ./grafana/.env
+    restart: always
+
+volumes:
+  rabbit_data:
+  prometheus_data:
+  grafana_data:
