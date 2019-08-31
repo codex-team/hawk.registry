@@ -231,6 +231,13 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {}
+    },
+    {
+      "name": "release/javascript",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
     }
   ],
   "exchanges": [
@@ -317,6 +324,14 @@
       "destination": "errors/test",
       "destination_type": "queue",
       "routing_key": "errors/test",
+      "arguments": {}
+    },
+    {
+      "source": "errors",
+      "vhost": "/",
+      "destination": "release/javascript",
+      "destination_type": "queue",
+      "routing_key": "release/javascript",
       "arguments": {}
     },
     {
