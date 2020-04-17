@@ -177,67 +177,23 @@
       "arguments": {}
     },
     {
-      "name": "notify/check",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "notify/email",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "notify/telegram",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "notify/slack",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/notify/check",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/notify/email",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/notify/telegram",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/notify/slack",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
       "name": "release/javascript",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
       "arguments": {}
+    },
+    {
+      "name": "notifier",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": true
+    },
+    {
+      "name": "sender/email",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": true
     }
   ],
   "exchanges": [
