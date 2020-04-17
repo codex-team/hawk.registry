@@ -232,7 +232,7 @@
       "arguments": {}
     },
     {
-      "name": "notify",
+      "name": "notifier",
       "vhost": "/",
       "type": "direct",
       "durable": true,
@@ -355,67 +355,43 @@
       "arguments": {}
     },
     {
-      "source": "notify",
+      "source": "notifier",
       "vhost": "/",
-      "destination": "notify/check",
+      "destination": "notifier",
       "destination_type": "queue",
-      "routing_key": "notify/check",
+      "routing_key": "notifier",
       "arguments": {}
     },
     {
-      "source": "notify",
+      "source": "notifier",
       "vhost": "/",
-      "destination": "notify/email",
+      "destination": "notifier",
       "destination_type": "queue",
-      "routing_key": "notify/email",
+      "routing_key": "notifier",
       "arguments": {}
     },
     {
-      "source": "notify",
+      "source": "notifier",
       "vhost": "/",
-      "destination": "notify/slack",
+      "destination": "sender/email",
       "destination_type": "queue",
-      "routing_key": "notify/slack",
+      "routing_key": "sender/email",
       "arguments": {}
     },
     {
-      "source": "notify",
+      "source": "notifier",
       "vhost": "/",
-      "destination": "notify/telegram",
+      "destination": "sender/slack",
       "destination_type": "queue",
-      "routing_key": "notify/telegram",
+      "routing_key": "sender/slack",
       "arguments": {}
     },
     {
-      "source": "stash",
+      "source": "notifier",
       "vhost": "/",
-      "destination": "stash/notify/check",
+      "destination": "sender/telegram",
       "destination_type": "queue",
-      "routing_key": "notify/check",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/notify/email",
-      "destination_type": "queue",
-      "routing_key": "notify/email",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/notify/slack",
-      "destination_type": "queue",
-      "routing_key": "notify/slack",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/notify/telegram",
-      "destination_type": "queue",
-      "routing_key": "notify/telegram",
+      "routing_key": "sender/slack",
       "arguments": {}
     }
   ]
