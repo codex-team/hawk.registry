@@ -238,6 +238,13 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {}
+    },
+    {
+      "name": "cron-tasks/archiver",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
     }
   ],
   "exchanges": [
@@ -261,6 +268,15 @@
     },
     {
       "name": "notify",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "cron-tasks",
       "vhost": "/",
       "type": "direct",
       "durable": true,
@@ -444,6 +460,14 @@
       "destination": "stash/notify/telegram",
       "destination_type": "queue",
       "routing_key": "notify/telegram",
+      "arguments": {}
+    },
+    {
+      "source": "cron-tasks",
+      "vhost": "/",
+      "destination": "cron-tasks/archiver",
+      "destination_type": "queue",
+      "routing_key": "cron-tasks/archiver",
       "arguments": {}
     }
   ]
