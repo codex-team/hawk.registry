@@ -217,6 +217,13 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {}
+    },
+    {
+      "name": "cron-tasks/paymaster",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
     }
   ],
   "exchanges": [
@@ -416,6 +423,14 @@
       "destination": "cron-tasks/archiver",
       "destination_type": "queue",
       "routing_key": "cron-tasks/archiver",
+      "arguments": {}
+    },
+    {
+      "source": "cron-tasks",
+      "vhost": "/",
+      "destination": "cron-tasks/paymaster",
+      "destination_type": "queue",
+      "routing_key": "cron-tasks/paymaster",
       "arguments": {}
     }
   ]
