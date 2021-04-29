@@ -177,7 +177,7 @@
       "arguments": {}
     },
     {
-      "name": "release/javascript",
+      "name": "release",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
@@ -331,9 +331,9 @@
     {
       "source": "errors",
       "vhost": "/",
-      "destination": "release/javascript",
+      "destination": "release",
       "destination_type": "queue",
-      "routing_key": "release/javascript",
+      "routing_key": "release",
       "arguments": {}
     },
     {
