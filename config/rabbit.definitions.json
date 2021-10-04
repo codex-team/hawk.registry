@@ -58,14 +58,7 @@
   ],
   "queues": [
     {
-      "name": "errors/golang",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "errors/nodejs",
+      "name": "errors/default",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
@@ -86,20 +79,6 @@
       "arguments": {}
     },
     {
-      "name": "errors/php",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "errors/python",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
       "name": "errors/test",
       "vhost": "/",
       "durable": true,
@@ -107,14 +86,7 @@
       "arguments": {}
     },
     {
-      "name": "stash/golang",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/nodejs",
+      "name": "stash/default",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
@@ -129,20 +101,6 @@
     },
     {
       "name": "stash/client",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/php",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {}
-    },
-    {
-      "name": "stash/python",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
@@ -283,17 +241,9 @@
     {
       "source": "errors",
       "vhost": "/",
-      "destination": "errors/golang",
+      "destination": "errors/default",
       "destination_type": "queue",
-      "routing_key": "errors/golang",
-      "arguments": {}
-    },
-    {
-      "source": "errors",
-      "vhost": "/",
-      "destination": "errors/nodejs",
-      "destination_type": "queue",
-      "routing_key": "errors/nodejs",
+      "routing_key": "errors/default",
       "arguments": {}
     },
     {
@@ -302,22 +252,6 @@
       "destination": "errors/javascript",
       "destination_type": "queue",
       "routing_key": "errors/javascript",
-      "arguments": {}
-    },
-    {
-      "source": "errors",
-      "vhost": "/",
-      "destination": "errors/php",
-      "destination_type": "queue",
-      "routing_key": "errors/php",
-      "arguments": {}
-    },
-    {
-      "source": "errors",
-      "vhost": "/",
-      "destination": "errors/python",
-      "destination_type": "queue",
-      "routing_key": "errors/python",
       "arguments": {}
     },
     {
@@ -347,33 +281,9 @@
     {
       "source": "stash",
       "vhost": "/",
-      "destination": "stash/golang",
+      "destination": "stash/default",
       "destination_type": "queue",
-      "routing_key": "errors/golang",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/nodejs",
-      "destination_type": "queue",
-      "routing_key": "errors/nodejs",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/php",
-      "destination_type": "queue",
-      "routing_key": "errors/php",
-      "arguments": {}
-    },
-    {
-      "source": "stash",
-      "vhost": "/",
-      "destination": "stash/python",
-      "destination_type": "queue",
-      "routing_key": "errors/python",
+      "routing_key": "errors/default",
       "arguments": {}
     },
     {
