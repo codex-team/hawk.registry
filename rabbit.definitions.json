@@ -189,6 +189,13 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {}
+    },
+    {
+      "name": "cron-tasks/task-manager",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
     }
   ],
   "exchanges": [
@@ -356,6 +363,14 @@
       "destination": "cron-tasks/paymaster",
       "destination_type": "queue",
       "routing_key": "cron-tasks/paymaster",
+      "arguments": {}
+    },
+    {
+      "source": "cron-tasks",
+      "vhost": "/",
+      "destination": "cron-tasks/task-manager",
+      "destination_type": "queue",
+      "routing_key": "cron-tasks/task-manager",
       "arguments": {}
     }
   ]
