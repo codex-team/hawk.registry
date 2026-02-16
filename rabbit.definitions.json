@@ -170,6 +170,13 @@
       "arguments": {}
     },
     {
+      "name": "sender/webhook",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
       "name": "cron-tasks/archiver",
       "vhost": "/",
       "durable": true,
@@ -339,6 +346,14 @@
       "destination": "sender/telegram",
       "destination_type": "queue",
       "routing_key": "sender/slack",
+      "arguments": {}
+    },
+    {
+      "source": "notifier",
+      "vhost": "/",
+      "destination": "sender/webhook",
+      "destination_type": "queue",
+      "routing_key": "sender/webhook",
       "arguments": {}
     },
     {
