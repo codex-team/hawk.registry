@@ -86,6 +86,13 @@
       "arguments": {}
     },
     {
+      "name": "external/sentry",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
       "name": "stash/default",
       "vhost": "/",
       "durable": true,
@@ -272,6 +279,14 @@
     {
       "source": "errors",
       "vhost": "/",
+      "destination": "external/sentry",
+      "destination_type": "queue",
+      "routing_key": "external/sentry",
+      "arguments": {}
+    },
+    {
+      "source": "errors",
+      "vhost": "/",
       "destination": "release",
       "destination_type": "queue",
       "routing_key": "release",
@@ -296,17 +311,17 @@
     {
       "source": "stash",
       "vhost": "/",
-      "destination": "stash/test",
+      "destination": "stash/javascript",
       "destination_type": "queue",
-      "routing_key": "errors/test",
+      "routing_key": "errors/javascript",
       "arguments": {}
     },
     {
-      "source": "notifier",
+      "source": "stash",
       "vhost": "/",
-      "destination": "notifier",
+      "destination": "stash/test",
       "destination_type": "queue",
-      "routing_key": "notifier",
+      "routing_key": "errors/test",
       "arguments": {}
     },
     {
@@ -338,7 +353,7 @@
       "vhost": "/",
       "destination": "sender/telegram",
       "destination_type": "queue",
-      "routing_key": "sender/slack",
+      "routing_key": "sender/telegram",
       "arguments": {}
     },
     {
